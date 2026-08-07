@@ -1,0 +1,22 @@
+.header{
+    background: #ffff;;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(50,160,65,1) 50%, rgba(255,255,255,1)100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.header nav a{
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.header  img{
+    float: left;
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    height: 100px;
+}
+
