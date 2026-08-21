@@ -1,0 +1,21 @@
+<article class="card" [class.promo]="produto().promo">
+    <img class="thumb" [src]="produto().imageUrl"/>
+
+    <div class="conteudo">
+        <h3>{{produto().nome}}</h3>
+
+        <p class="desc">{{produto().descricao}}</p>
+
+        <div class="linhapreco">
+            <span class="preco"> {{produto().preco | currency:'BRL'}}</span>
+
+            <app-qunatidade-controle [(contador)]="quantidade"></app-qunatidade-controle>
+        </div>
+            <div class="acoes">
+                <button type="button" class="btn primary" (click)="onAdd()">Adicionar</button>
+                <button type="button" class="btn ghost" (click)="onView()">Detalhes</button>
+            </div>
+        
+    </div>
+
+</article>

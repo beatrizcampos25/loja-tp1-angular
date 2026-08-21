@@ -1,0 +1,9 @@
+<section>
+    <h2>Produtos</h2>
+
+    <div class="grid">
+        <app-card-produto [produto]="produtos[0]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"/>
+        <app-card-produto [produto]="produtos[1]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"/>
+        <app-card-produto [produto]="produtos[2]" (view)="onViewProduct($event)" (add)="onAddProduct($event)"/>
+    </div>
+</section>
