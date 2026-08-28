@@ -2,17 +2,54 @@
     <img class="thumb" [src]="produto().imageUrl"/>
 
     <div class="conteudo">
-        <h3>{{produto().nome}}</h3>
+
+        <header class="cabecalho">
+            <h3 class="titulo">{{produto().nome}}</h3>
+
+            @switch (produto().estado) {
+                @case ('novo') {
+                    <span class="selo novo">Novo</span>
+                }
+                @case('esgotado'){
+                    <span class="selo esgotado">Esgotado</span>
+                }
+            }
+
+            @if(produto().promo){
+                <span class="selo promo">Aproveite</span>
+            }
+        </header>
+      
 
         <p class="desc">{{produto().descricao}}</p>
 
-        <div class="linhapreco">
-            <span class="preco"> {{produto().preco | currency:'BRL'}}</span>
+        <!--<div class="linhapreco">
+            <span class="preco"> {{produto().preco | currency:'BRL': 'symbol': '1.2-2'}}</span>
 
             <app-qunatidade-controle [(contador)]="quantidade"></app-qunatidade-controle>
+        </div>-->
+        
+        <div class="preco-container">
+            @if(produto().promo){
+                <div class="preco-group">
+                    <span class="preco desconto">{{produto().preco | desconto:10 | currency: 'BRL': 'symbol': '1.2-2'}}</span>
+                    <span class="preco original">{{produto().preco | currency: 'BRL': 'symbol': '1.2-2'}}</span>
+                </div>
+            }@else {
+                <span class="preco">{{produto().preco | currency: 'BRL': 'symbol': '1.2-2'}}</span>
+            }
+
+            @if(produto().estado != 'esgotado'){
+                <app-qunatidade-controle [(contador)]="quantidade"></app-qunatidade-controle>
+            }
+
         </div>
+
             <div class="acoes">
-                <button type="button" class="btn primary" (click)="onAdd()">Adicionar</button>
+                @if(produto().estado !='esgotado' && quantidade()>0){
+                    <button type="button" class="btn primary" (click)="onAdd()">Adicionar</button>
+                } 
+                
                 <button type="button" class="btn ghost" (click)="onView()">Detalhes</button>
             </div>
         

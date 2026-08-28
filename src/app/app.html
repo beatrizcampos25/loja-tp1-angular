@@ -1,6 +1,10 @@
 <app-header [titulo]="title()" (textoSobre)="receberSobre($event)"></app-header>
 
 <main class="container">
+
+  @if(x() % 2 == 0){
+    <h1>Floripa</h1>
+  }
   <!--<h2>Angular - Aula 01</h2>-->
 
   <app-lista-produtos></app-lista-produtos>

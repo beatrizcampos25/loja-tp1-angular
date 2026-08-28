@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { CardProduto } from "../card-produto/card-produto";
 
@@ -9,6 +9,17 @@ import { CardProduto } from "../card-produto/card-produto";
   styleUrl: './lista-produtos.css',
 })
 export class ListaProdutos {
+
+  apenasPromo = signal(false);
+
+  produtosExibidos = computed(()=> this.apenasPromo()
+  ? this.produtos.filter(p=>p.promo)
+  : this.produtos);
+
+  alternarPromo(){
+    this.apenasPromo.update(v=>!v);
+  }
+
   produtos = <Produto[]>[
     {
       id:1,
@@ -16,7 +27,8 @@ export class ListaProdutos {
       preco: 1699.99,
       descricao:'Canetas caras demais. Deus me livre',
       imageUrl: 'images/mon.png',
-      promo: false
+      promo: false,
+      estado: 'novo'
     },
 
     {
@@ -25,7 +37,8 @@ export class ListaProdutos {
       preco: 1200.99,
       descricao:'Continuam caras demais. Deus me livre',
       imageUrl: 'images/ozempic.png',
-      promo: false
+      promo: false,
+      estado: 'usado'
     },
 
     {
@@ -34,7 +47,8 @@ export class ListaProdutos {
       preco: 2500.99,
       descricao:'Canetas caras demais demais. Deus me livre',
       imageUrl: 'images/mon.png',
-      promo: true
+      promo: true,
+      estado:  'esgotado'
     },
     
   ];

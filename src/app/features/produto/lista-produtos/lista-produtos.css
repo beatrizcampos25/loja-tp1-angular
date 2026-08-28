@@ -12,6 +12,36 @@
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px,lfr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 16px;
+}
+
+.barradetarefas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.btn.sopromo{
+    border: 1px solid #e5e7eb;
+    background: #ffff;
+    color: #374151;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.btn.sopromo.ativo{
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgb(255, 118, 210,.08);
+}
+
+.vazio{
+    color: #6b7280;
+    background: #f9fafb;
+    border: 1pz dashed #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
 }

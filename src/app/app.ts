@@ -19,6 +19,8 @@ export class App {
 
   sobre?: string;
 
+  x = signal(10);
+
   receberSobre(msg: string):void{
     this.sobre=msg;
   }
