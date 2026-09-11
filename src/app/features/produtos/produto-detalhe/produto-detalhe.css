@@ -1,0 +1,47 @@
+.detalhe {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 16px;
+  }
+  .detalhe-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 10px;
+    background: #fff;
+  }
+  .thumb {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f3f4f6;
+  }
+  .infos {
+    display: grid;
+    gap: 12px;
+  }
+  .descricao {
+    color: #4b5563;
+  }
+  .preco {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  .acoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .btn.ghost {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+  }

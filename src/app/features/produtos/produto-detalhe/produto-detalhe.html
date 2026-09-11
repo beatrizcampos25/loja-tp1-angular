@@ -1,0 +1,32 @@
+<section class="detalhe">
+    @if(carregando()){
+        <p>Carregando...</p>
+    }
+    @else {
+        @if(!produto()){
+            <p>produto não encontrado</p>
+            <button class="btn ghost" (click)="voltar()">Voltar</button>
+        }
+        @else{
+            <article class="detalhe-card">
+                <img class="thumb" [src]="produto()!.imageUrl"/>
+                <div class="infos">
+                    <h2>{{produto()!.nome}}</h2>
+                    <p class="descricao">{{produto()!.descricao}}</p>
+                @if(produto()!.promo){
+                    {{produto()!.preco | desconto:10 | currency:'BRL':'synbol':'1.2-2'}}
+                }
+                @else{
+                    {{produto()!.preco | currency:'BRL':'synbol':'1.2-2'}}
+                }
+
+                <div class="acoes">
+
+                </div>
+                    <button class="btn ghost" (click)="voltar()">Voltar</button>
+                    <!--Aqui vai ter um botao comprar em breve-->
+                </div>
+            </article>
+        }
+    }
+</section>
