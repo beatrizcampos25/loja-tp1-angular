@@ -1,16 +1,25 @@
 html,
-body{
-    height: 100%;
-    margin: 0;
+body {
+  height: 100%;
+  margin: 0;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #f9fafb;
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f9fafb;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-
+app-footer {
+  margin-top: auto;
+  color: #fff;
+  text-align: center;
+}

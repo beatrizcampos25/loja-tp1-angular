@@ -21,7 +21,7 @@
         </header>
       
 
-        <p class="desc">{{produto().descricao}}</p>
+        <p class="desc">{{produto().descricao | truncar:25}}</p>
 
         <!--<div class="linhapreco">
             <span class="preco"> {{produto().preco | currency:'BRL': 'symbol': '1.2-2'}}</span>

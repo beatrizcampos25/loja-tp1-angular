@@ -12,7 +12,10 @@
         </button>
     </header>
 
-    @if(produtosExibidos().length ===0){
+    @if(carregando()){
+        <p>Carregando Produtos...</p>
+    }
+    @else if(produtosExibidos().length ===0){
         <p class="vazio">Nenhum produto em promoção encontrado</p>
     }
 

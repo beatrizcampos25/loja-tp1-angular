@@ -10,7 +10,7 @@
 }
 
 .card.promo {
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, .1);
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
   border: 2px dashed #2f9e41;
 }
 
@@ -57,14 +57,13 @@
 }
 
 .preco-group {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .preco.desconto {
-color: #d32f2f;
-font-weight: bold;
-
+  color: #d32f2f;
+  font-weight: bold;
 }
 
 .preco.original {
@@ -77,9 +76,10 @@ font-weight: bold;
   display: flex;
   gap: 12px;
   margin-top: 8px;
+  justify-content: right;
 }
 
-.esgotado{
+.esgotado {
   padding-top: 10px;
   color: red;
   font-weight: bold;
@@ -98,7 +98,7 @@ font-weight: bold;
 }
 
 .btn.primary:hover {
-  opacity: .95;
+  opacity: 0.95;
 }
 
 .btn.ghost {
@@ -113,17 +113,30 @@ font-weight: bold;
 
 .selo {
   display: inline-block;
-  font-size: .75rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 999px;
   border: 1px solid transparent;
 }
-.selo.novo { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
-.selo.esgotado { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
-.selo.promo { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.selo.novo {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+.selo.esgotado {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+.selo.promo {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
 
 .cabecalho {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
 }
