@@ -1,0 +1,87 @@
+.form-container {
+    max-width: 600px;
+    margin: 32px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  h2 {
+    color: #2f9e41;
+    margin-bottom: 20px;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  .campo label {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .campo input.ng-dirty.ng-invalid {
+    border-color: #e74c3c;
+  }
+  
+  /* Campo válido e sujo */
+  .campo input.ng-dirty.ng-valid {
+    border-color: #2ecc71;
+  }
+  .campo input,
+  .campo textarea,
+  .campo select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .campo textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .campo.check {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  button {
+    background: #2f9e41;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:disabled {
+    background: #a5d6a7;
+    cursor: not-allowed;
+  }
+  
+  .botoesform {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .botaocancelar {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+  }
+  
+  .erro {
+    color: #d32f2f;
+    font-size: 0.85rem;
+  }
+  
+  .mensagem {
+    margin-top: 12px;
+    font-weight: bold;
+  }

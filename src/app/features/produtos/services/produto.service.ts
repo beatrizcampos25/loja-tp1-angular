@@ -3,6 +3,7 @@ import { LoggerService } from '../../../core/services/logger/logger.service';
 import { Produto, ProdutoMapper } from '../../../model/produto';
 import { catchError, delay, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 
 @Injectable({
@@ -13,39 +14,6 @@ export class ProdutoService {
   private http = inject(HttpClient);
 
   private apiUrl = 'https://fakestoreapi.com/products';
-
-  private readonly listaMock = <Produto[]>[
-    {
-      id:1,
-      nome: 'Mounjaro',
-      preco: 1699.99,
-      descricao:'Canetas caras demais. Deus me livre',
-      imageUrl: 'images/mon.png',
-      promo: false,
-      estado: 'novo'
-    },
-
-    {
-      id:2,
-      nome: 'Ozenpic',
-      preco: 1200.99,
-      descricao:'Continuam caras demais. Deus me livre',
-      imageUrl: 'images/ozempic.png',
-      promo: false,
-      estado: 'usado'
-    },
-
-    {
-      id:3,
-      nome: 'Mounjaro 2',
-      preco: 2500.99,
-      descricao:'Canetas caras demais demais. Deus me livre',
-      imageUrl: 'images/mon.png',
-      promo: true,
-      estado:  'esgotado'
-    },
-    
-  ];
 
   listar(): Observable<Produto[]>{
     this.logger.info("[PRODUTO SERVICE] - Retorndo listas de produtos");
@@ -59,6 +27,25 @@ export class ProdutoService {
   }
 
   getById(id:number): Observable<Produto | undefined>{
-    return of(this.listaMock.find(p=>p.id ==id)).pipe(delay(500));
+    this.logger.info("[PRODUTO SERVICE] - Buscando produto id: " + id);
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(map(json => json ? ProdutoMapper.fromJson(json) : undefined),
+    catchError(erro => {
+      this.logger.error("[PRODUTO SERVICE]- Erro ao buscar produto id: " + id, erro);
+      return of(undefined);
+    })
+    );
   }
+
+  criar(produto:Produto): Observable<any>{
+
+    let body={
+      title:produto.nome,
+      price: produto.preco,
+      description:produto.descricao,
+      image: produto.imageUrl,
+      category: produto.categoria
+    }
+    return this.http.post(this.apiUrl,body);
+  }
+
 }

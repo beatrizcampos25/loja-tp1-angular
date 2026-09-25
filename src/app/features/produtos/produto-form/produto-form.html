@@ -1,0 +1,77 @@
+<section class="form-container">
+    <h2>Novo produto</h2>
+
+    <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" novalidate>
+        <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" [(ngModel)]="novoProduto.nome", required, minlength="3"/>
+
+        <small class="erro" [hidden]="!(formulario.controls['nome']?. dirty && formulario.controls['nome']?.invalid)">\|
+                Nome do produto é obrigatorio e deve ter ao menos tres caracteres.
+        </small>
+        </div>
+
+        <div class="campo">
+            <label for="preco">Preço</label>
+            <input type="number" id="preco" name="preco" [(ngModel)]="novoProduto.preco", required, minlength="1"/>
+
+            @if(formulario.controls['preco']?.invalid && formulario.submitted){
+                <small class="erro">
+                    Preco é obrigatorio e deve ser no minimo 1.
+                </small>
+            }
+
+        </div>
+
+        <div class="campo">
+            <label for="descricao">Descriçao</label>
+            <textarea name="descricao" id="descricao" [(ngModel)]="novoProduto.descricao", required></textarea>
+        </div>
+
+        <div class="campo">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="categoria" [(ngModel)]="categoriaSelecionada" >
+                <option value="">Selecione...</option>
+                @for(cat of categorias(); track cat){
+                    <option [value]="cat">{{cat}}</option>
+                }
+            </select>
+
+            @if(formulario.submitted && formulario.controls['categoria'].invalid){
+                <small class="erro">
+                    Selecione uma categoria.
+                </small>
+            }
+        </div>
+
+        @if(mostrarNovaCategoria()){
+            <div class="campo">
+                <label for="novaCategoria">Nova Categoria</label>
+                <input type="text" id="novaCategoria" name="novaCategoria" [(ngModel)]="novaCategoria", required/>
+                @if(mostrarNovaCategoria() && !(formulario.submitted && novaCategoria().trim().length ==0)){
+                    <small class="erro">
+                        Digite a categoria.
+                    </small>
+                }
+            </div>
+        }
+
+        <div class="campo">
+            <label for="imageUrl">Imagem (URL)</label>
+            <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="novoProduto.imageUrl"/>
+        </div>
+
+        <div class="campo check">
+            <label><input type="checkbox" name="promo" id="promo" [(ngModel)]="novoProduto.promo"/>Em promoção</label>
+        </div>
+
+        <div class="botoesform">
+            <button type="submit" [disabled]="enviando()">Salvar</button>
+            <button class="botaocancelar" (click)="this.router.navigateByUrl('/produtos')">Cancelar</button>
+        </div>
+
+        @if(mensagem()){
+            <p class="mensagem">{{mensagem()}}</p>
+        }
+    </form>
+</section>
